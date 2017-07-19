@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>USICT Alumni Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load staticfiles%}
+    <link rel="stylesheet" type="text/css" href="{% static 'form/bootstrap.min.css'%}">
+</head>
+<body>
+<style type="text/css">
+	body{
+		
+	}
+	input, select {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555;
+    vertical-align: middle;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+</style> 
+
+<br><br>
+<br><br>
+	<div class="container">
+    <form class="well form-horizontal" action=" " method="post" id="contact_form">
+        <fieldset>
+            <!-- Form Name -->
+            <legend>
+                <center>
+                    {% load staticfiles%}
+                    <img height="100px" src="{% static 'form/ggsipu-logo.png'%}">
+                    <h2><b>USICT Alumni Registration Form</b></h2></center>
+            </legend>
+            <br>
+
+            {% csrf_token %}
+            {% for field in form%}
+            <div class="form-group">
+                <label class="col-md-5 control-label">{{field.label_tag}}</label>
+                <div class="col-md-6 inputGroupContainer">
+                    <div class="input-group">
+                        {{ field }}
+                        <span class="text-danger small">{{field.errors}}</span>
+                    </div>
+                </div>
+            </div>
+			{% endfor%}
+                        
+             
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label"></label>
+                <div class="col-md-4" style="text-align: center">
+                    <br>
+                    <button type="submit" class="btn btn-success">SUBMIT</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+
+</body>
+
+</html>
